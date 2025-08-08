@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Words Stages - The Meme Coin</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <div class="logo">
+                <img src="https://fv5-5.files.fm/thumb_show.php?i=uvbewzsnxs&view&v=1&PHPSESSID=4f9931d11487a699094fc5f80220800e9205c311" alt="Words Stages Logo">
+            </div>
+        </header>
+        
+        <section class="hero">
+            <h1 class="title">WORDS STAGES</h1>
+            <p class="subtitle">The meme coin that takes you through all the <span class="highlight">stages of crypto emotions</span></p>
+            
+            <div class="buttons">
+                <a href="https://x.com/Turci999Umberto?t=2VeU4ZmQRA-a0S65IDU2Iw&s=35" target="_blank" class="btn btn-twitter">
+                    <i class="fab fa-twitter"></i>
+                    Join us on Twitter
+                </a>
+                
+                <a href="https://t.me/wordssatagepumpfun" target="_blank" class="btn btn-telegram">
+                    <i class="fab fa-telegram"></i>
+                    Join Telegram
+                </a>
+            </div>
+            
+            <div class="contract-button-container">
+                <button class="btn btn-contract" id="contractBtn">
+                    <i class="fas fa-file-contract"></i> Copy Contract Address
+                </button>
+            </div>
+            
+            <div class="token-stats">
+                <div class="stat-card">
+                    <div class="stat-value">10,000+</div>
+                    <div class="stat-label">Holders</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-value">$1.2M</div>
+                    <div class="stat-label">Market Cap</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-value">100%</div>
+                    <div class="stat-label">Community Driven</div>
+                </div>
+            </div>
+            
+            <div class="features">
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-rocket"></i>
+                    </div>
+                    <h3 class="feature-title">Lightning Fast</h3>
+                    <p class="feature-text">Built on the latest blockchain technology for instant transactions.</p>
+                </div>
+                
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-lock"></i>
+                    </div>
+                    <h3 class="feature-title">Secure</h3>
+                    <p class="feature-text">Fully audited smart contract with locked liquidity.</p>
+                </div>
+                
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-users"></i>
+                    </div>
+                    <h3 class="feature-title">Community Focused</h3>
+                    <p class="feature-text">Join our vibrant community of crypto enthusiasts and meme lovers.</p>
+                </div>
+            </div>
+        </section>
+        
+        <footer>
+            <p>© 2023 Words Stages. All rights reserved. The future of meme coins is here.</p>
+            <p>This website is for entertainment purposes only. Not financial advice.</p>
+        </footer>
+    </div>
+    
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const contractBtn = document.getElementById('contractBtn');
+            const contractAddress = "0x1234567890abcdef1234567890abcdef12345678";
+            
+            // Create floating coins
+            for (let i = 0; i < 15; i++) {
+                createFloatingCoin();
+            }
+            
+            contractBtn.addEventListener('click', function() {
+                const textArea = document.createElement('textarea');
+                textArea.value = contractAddress;
+                document.body.appendChild(textArea);
+                textArea.select();
+                document.execCommand('copy');
+                document.body.removeChild(textArea);
+                
+                // Visual feedback
+                const originalText = contractBtn.innerHTML;
+                contractBtn.innerHTML = '<i class="fas fa-check"></i> Copied!';
+                contractBtn.classList.add('copied');
+                
+                setTimeout(() => {
+                    contractBtn.innerHTML = originalText;
+                    contractBtn.classList.remove('copied');
+                }, 2000);
+            });
+            
+            // Animate elements on scroll
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.style.opacity = 1;
+                        entry.target.style.transform = 'translateY(0)';
+                    }
+                });
+            }, { threshold: 0.1 });
+            
+            document.querySelectorAll('.feature-card, .stat-card, .contract-button-container').forEach(el => {
+                el.style.opacity = 0;
+                el.style.transform = 'translateY(20px)';
+                el.style.transition = 'opacity 0.5s ease, transform 0.5s ease';
+                observer.observe(el);
+            });
+            
+            function createFloatingCoin() {
+                const coin = document.createElement('div');
+                coin.classList.add('coin-animation');
+                
+                const left = Math.random() * 100;
+                const top = Math.random() * 100;
+                const size = 20 + Math.random() * 30;
+                const delay = Math.random() * 5;
+                const duration = 5 + Math.random() * 10;
+                
+                coin.style.left = `${left}%`;
+                coin.style.top = `${top}%`;
+                coin.style.width = `${size}px`;
+                coin.style.height = `${size}px`;
+                coin.style.animationDelay = `${delay}s`;
+                coin.style.animationDuration = `${duration}s`;
+                
+                document.body.appendChild(coin);
+            }
+        });
+    </script>
+</body>
+</html>
